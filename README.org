@@ -1,0 +1,43 @@
+* 2023 Strange Loop
+
+https://thestrangeloop.com/schedule.html
+
+Sept 21 - Sept 22, 2023
+Union Station
+St. Louis, MO
+
+* Sessions 
+
+** How to build a meaningful career
+
+** Playing with Engineering
+
+** Why Programming Languages Matter
+
+** Without Open Data, there is no Ethical Machine Learning
+
+** Is my Large Language Model a Strange Loop?
+
+** Babashka: a meta-circular Clojure interpreter for the command line
+
+** Software & The Game of Go
+
+** Designing Dope Distributed Systems for Outer Space with High-Fidelity Simulation
+
+** New algorithms for collaborative text editing
+
+** The Economics of Programming Languages
+
+** Can a Programming Language Reason About Systems?
+
+** Birdsong as code
+
+** A Long Strange Loop
+
+** How to Make Hard Things Easy
+
+** Drawing Comics at Work
+
+** Closing Reception and Signing
+
+
