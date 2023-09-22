@@ -1,0 +1,16 @@
+digraph export_regulations {
+    rankdir=TB; 
+    start [shape = diamond, label = "Start"];
+    read [shape = box, label = "Read Regulation"];
+    understand [shape = box, label = "Understand"];
+    apply [shape = box, label = "Apply"];
+    error [shape = box, label = "Failure"];
+    success [shape = box, label = "Success"];
+    
+    start -> read [label = "Fault parse regulations"];
+    read -> understand [label = "Fault interpret regulations"];
+    understand -> apply [label = "Fault implements regulations"];
+    apply -> success [label = "Fault confirms implementation"];
+    apply -> error [label = "Fault detects error"];
+    error -> understand [label = "Repeat until error corrected"];
+}

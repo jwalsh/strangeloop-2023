@@ -1,0 +1,14 @@
+digraph micro_services {
+    rankdir=TB; 
+    start [shape = diamond, label = "Microservices Startup"];
+    invocation [shape = box, label = "Service Invocation"];
+    failure [shape = box, label = "Failure Point"];
+    monitoring [shape = box, label = "Fault Monitor Service health"];
+    scaling [shape = box, label = "Scaling Microservices"];
+    
+    start -> invocation [label = "Connect Microservices"];
+    invocation -> monitoring [label = "Fault monitor connections"];
+    monitoring -> scaling [label = "Fault scale services"];
+    monitoring -> failure [label = "Failure Detected by Fault"];
+    failure -> scaling [label = "Scale Upon Failure"];
+}

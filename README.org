@@ -38,6 +38,316 @@ St. Louis, MO
 
 ** [#A] Can a Programming Language Reason About Systems?
 
+- https://www.thestrangeloop.com/2023/can-a-programming-language-reason-about-systems.html
+- https://github.com/Fault-lang/Fault
+
+#+begin_ai
+We have lots of languages that apply logic to verifying, simulating, or generating systems, but they all use the syntax of mathematical proofs which many programmers find difficult to learn. Fault is a new language developed to help people model systems and reason about their behavior and limitations. These systems can be technical, they can be organizational, regulatory or they can be hybrids. This talk will cover the basic styles of logic programming—model checking, simulation, symbolic execution—and how Fault converts a programmer friendly syntax into logic friendly models. Watch Fault do things like give advice about 5,000 page export regulations, tell you when your micro services architecture is going to start breaking down, and solve sudoku puzzles.
+#+end_ai
+
+#+begin_src chatgpt-shell :version "gpt-4"
+We have lots of languages that apply logic to verifying, simulating, or generating systems, but they all use the syntax of mathematical proofs which many programmers find difficult to learn. Fault is a new language developed to help people model systems and reason about their behavior and limitations. These systems can be technical, they can be organizational, regulatory or they can be hybrids. This talk will cover the basic styles of logic programming—model checking, simulation, symbolic execution—and how Fault converts a programmer friendly syntax into logic friendly models. Watch Fault do things like give advice about 5,000 page export regulations, tell you when your micro services architecture is going to start breaking down, and solve sudoku puzzles.
+#+end_src
+
+#+RESULTS:
+Fault is different from other modeling languages in that it aims to bridge the gap between the rigorous language of logic used in system modeling and the straightforward syntax of programming languages. By providing a programmer-friendly syntax that can be easily converted into complex logic, it seeks to lower the barrier to entry in logic programming.
+
+Model checking, simulation, and symbolic execution are three fundamental styles of logic programming. In model checking, a model of the system is checked against a specification that describes the desired properties of the system. Simulation involves modeling and studying the behavior of the system over time. Symbolic execution, on the other hand, systematically explores all possible paths through the program, using symbolic values to represent possible inputs.
+
+Fault harnesses these styles in an intuitive and straightforward manner. It can perform complex logic functions as easily as a human can read a book. Imagine a language that can sift through thousands of pages of export regulations and give clear advice. Or one that can predict when your microservices architecture will face issues. All these are feasible with Fault. And, just to showcase the fun side of logic programming, it can even solve sudoku puzzles.
+
+Fault provides a new approach to system modelling, making it more accessible to programmers at various skill levels. Its user-friendly syntax eliminates the need for understanding complex mathematical proofs, allowing more people to explore and benefit from the power of logic programming. With the development of Fault, logic programming is not just for mathematicians, but for anyone with the curiosity and inclination to reason about complex systems.
+
+I encourage everyone to give Fault a try and discover what fascinating tasks it can do and what amazing systems you can create with it. Imagine what you can do in a world where reasoning about complex systems is as easy as writing a piece of code. Join me on this fascinating journey into a new dimension of logic programming.
+
+#+begin_src chatgpt-shell :version "gpt-4"
+Create a org-mode starting at level 3 of five slides for TLA+, coq, or solvers with code examples that would be for the following presentation: We have lots of languages that apply logic to verifying, simulating, or generating systems, but they all use the syntax of mathematical proofs which many programmers find difficult to learn. Fault is a new language developed to help people model systems and reason about their behavior and limitations. These systems can be technical, they can be organizational, regulatory or they can be hybrids. This talk will cover the basic styles of logic programming—model checking, simulation, symbolic execution—and how Fault converts a programmer friendly syntax into logic friendly models. Watch Fault do things like give advice about 5,000 page export regulations, tell you when your micro services architecture is going to start breaking down, and solve sudoku puzzles.
+#+end_src
+
+#+RESULTS:
+*** Slide 1: Introduction to Fault and Logic Programming ***
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+
+- Fault is developed to assist in systems modeling and reasoning about their behaviors and limitations. 
+- Targets a wide range of systems, technical, organizational, regulatory, or hybrid.
+- Will cover basic styles of logic programming: model checking, simulation, symbolic execution.
+- Reinterprets a programmer-friendly syntax into logic-friendly models.
+
+*** Slide 2: Model Checking with Fault ***
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+
+/src/fault-code/
+#+BEGIN_SRC fault
+model_checking {
+  system Sys {
+    states = 3,
+    transitions = [{from: 1, to:2}, {from: 2, to: 3}, {from: 3, to: 1}]
+  }
+  property 'cycle' for s in Sys.states {
+    exists path in Sys.transitions from s to s
+  }
+}
+#+END_SRC
+- Model checking is the automated deduction of whether a model satisfies a specific property. 
+- Fault provides an intuitive way to define and verify these properties.
+
+*** Slide 3: Simulation with Fault *** 
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+
+/src/fault-code/
+#+BEGIN_SRC fault
+simulation {
+  system Sys {
+    events = ["start", "work", "stop"],
+    transitions = [{"start", "work"}, {"work", "stop"}]
+  }
+  trace t in Sys.events {
+    always_before "start", "stop"
+  }
+}
+#+END_SRC
+- Simulation allows us to test how systems behaves under specific conditions.
+- Fault allows us to simulate these systems and observe their behavior under varying conditions.
+
+*** Slide 4: Symbolic Execution with Fault ***
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+
+/src/fault-code/
+#+BEGIN_SRC fault
+func f(divide(X,Y)) returns Z {
+  assert(Y!=0);
+  return X/Y;
+}
+symbolic_execution(f) with X = 10, Y = 0;
+#+END_SRC
+- Symbolic execution is a way to explore feasible paths of a system or program.
+- Fault helps in executing symbolic execution with varying inputs. 
+
+*** Slide 5: Useful Applications: Fault Giving Advice on Export Regulations ***
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+
+/src/fault-code/
+#+BEGIN_SRC fault
+model Rules {
+  export_conditions = ["not war zone", "not hazardous", "has proper paperwork"]
+}
+
+check_all_conditions(Rules.export_conditions)
+#+END_SRC
+src/fault-code/
+#+BEGIN_SRC fault
+  application Microservices {
+    service_count = 20,
+    connections = {[(1,2), (2,3)...]}
+  }
+  check_service_connections(application.connections) 
+  find_failure_points(application)
+#+END_SRC
+- With Fault's logic programming capacities, it can navigate large documents like export regulations.
+- Fault can also predict when and where your microservices architecture could break down. 
+
+Slide 6: Fun Applications: Fault Solving Sudoku
+:PROPERTIES:
+:BEAMER_env: frame
+:END:
+
+- Fault's logical consistency checks are helpful for sudoku puzzles!
+- Next, we will demonstrate a simple Sudoku solver using Fault. 
+
+  /src/fault-code/
+  #+BEGIN_SRC fault
+  solve_sudoku {
+    grid = [[5,3,0,0,7,0,0,0,0],
+            [6,0,0,1,9,5,0,0,0],
+            ...
+            [0,0,0,0,0,0,2,0,0]]
+  }
+  #+END_SRC
+
+
+
+*** Extra: Introduction to Logic Programming Language
+Slide 1: 
+Title: Introduction to Logic Programming Language
+
+- Definition of logic programming: A type of programming paradigm which is largely based on formal logic.
+- Core types of logic programming: 
+   1. Model Checking: Verification method for finite state concurrent systems.
+   2. Simulation: Imitational representation for the functioning of one system or process.
+   3. Symbolic Execution: Program testing technique.
+- Current limitations: Most use the syntax of mathematical proofs, which are challenging for many programmers to learn.
+
+Image: Depicting some popular logic programming languages.
+
+Content: "In this presentation, we are going to introduce a new logic programming language, Fault, designed to make system modeling and analytical reasoning more accessible and user-friendly."
+
+---
+
+Slide 2:
+Title: Introducing Fault Language
+
+Content:
+- Fault is a new and revolutionary logic programming language.
+- It is developed to assist people model systems and reason about their behavior and limitations.
+- The systems could be technical, organizational, regulatory or hybrids.
+- Fault translates programmer-friendly syntax into models that are friendly to logic.
+
+Image: Fault logo
+
+---
+
+Slide 3: 
+Title: Practical Applications of Fault
+
+Content: 
+- With Fault, you can get advice on complex documents such as 5,000-page export regulations.
+- The language can predict when your micro-services architecture may begin to falter.
+- It can also help solve intricate logic puzzles like Sudoku.
+
+Image: Diagram illustrating how Fault operates.
+
+---
+
+Slide 4: 
+Title: Fault Examples
+
+Content: 
+- Fault for parsing export regulations:
+  ```fault
+  import regulation
+  check(regulation, 5000)
+  ```
+  
+- Fault for microservice architecture evaluation:
+  ```fault
+  import architecture
+  evaluate(architecture)
+  ```
+  
+- Fault for Sudoku:
+  ```fault
+  import sudoku
+  solve(sudoku)
+  ```
+
+Image: Code blocks highlighting the simplicity of Fault.
+
+---
+
+Slide 5: 
+Title: Conclusion and Future of Fault
+
+Content: 
+- Fault is groundbreaking as it combines the rigour of traditional logic programming languages with a more user-friendly aesthetic.
+- By transforming complex logic problems into simple programming tasks, Fault promises to revolutionize system modelling and analysis.
+- As more programmers discover and adopt Fault, we anticipate continued growth and refinement of the language.
+
+Image: Depiction of the future growth expected in the Fault programming community.
+
+
+#+begin_src chatgpt-shell :version "gpt-4"
+Create five example graphviz dot file examples of logic flow and state diagrams that illustrate the use of the followin presentation.Format for org-mode starting at level 3: We have lots of languages that apply logic to verifying, simulating, or generating systems, but they all use the syntax of mathematical proofs which many programmers find difficult to learn. Fault is a new language developed to help people model systems and reason about their behavior and limitations. These systems can be technical, they can be organizational, regulatory or they can be hybrids. This talk will cover the basic styles of logic programming—model checking, simulation, symbolic execution—and how Fault converts a programmer friendly syntax into logic friendly models. Watch Fault do things like give advice about 5,000 page export regulations, tell you when your micro services architecture is going to start breaking down, and solve sudoku puzzles.
+#+end_src
+
+#+RESULTS:
+Example 1: Export Regulations Flow 
+```dot
+digraph export_regulations {
+    rankdir=TB; 
+    start [shape = diamond, label = "Start"];
+    read [shape = box, label = "Read Regulation"];
+    understand [shape = box, label = "Understand"];
+    apply [shape = box, label = "Apply"];
+    error [shape = box, label = "Failure"];
+    success [shape = box, label = "Success"];
+    
+    start -> read [label = "Fault parse regulations"];
+    read -> understand [label = "Fault interpret regulations"];
+    understand -> apply [label = "Fault implements regulations"];
+    apply -> success [label = "Fault confirms implementation"];
+    apply -> error [label = "Fault detects error"];
+    error -> understand [label = "Repeat until error corrected"];
+}
+```
+
+Example 2: Micro Services Architecture Breakdown
+```dot
+digraph micro_services {
+    rankdir=TB; 
+    start [shape = diamond, label = "Microservices Startup"];
+    invocation [shape = box, label = "Service Invocation"];
+    failure [shape = box, label = "Failure Point"];
+    monitoring [shape = box, label = "Fault Monitor Service health"];
+    scaling [shape = box, label = "Scaling Microservices"];
+    
+    start -> invocation [label = "Connect Microservices"];
+    invocation -> monitoring [label = "Fault monitor connections"];
+    monitoring -> scaling [label = "Fault scale services"];
+    monitoring -> failure [label = "Failure Detected by Fault"];
+    failure -> scaling [label = "Scale Upon Failure"];
+}
+```
+
+Example 3: Sudoku Solver
+```
+digraph sudoku {
+    rankdir=TB; 
+    load [shape = diamond, label = "Load Sudoku Position"];
+    reason [shape = box, label = "Fault Reason About Position"];
+    solution [shape = box, label = "Fault Propose Solution"];
+    successful [shape = box, label = "Successful Solution"];
+    failure [shape = box, label = "No Solution Found"];
+    
+    load -> reason [label = "Load Position"];
+    reason -> solution [label = "Reason Solution"];
+    solution -> successful [label = "Solution Found"];
+    solution -> failure [label = "Solution Not Found"];
+}
+```
+
+Example 4: Symbolic Execution
+```
+digraph symbolic_execution {
+    rankdir=TB; 
+    start [shape = diamond, label = "Start"];
+    fault_execution [shape = box, label = "Fault Symbolic Execution"];
+    branch1 [shape = box, label = "Branch 1"];
+    branch2 [shape = box, label = "Branch 2"];
+    
+    start -> fault_execution [label = "Symbolic Execution"];
+    fault_execution -> branch1 [label = "Path 1"];
+    fault_execution -> branch2 [label = "Path 2"];
+}
+```
+
+Example 5: Model Checking
+```
+digraph model_checking {
+    rankdir=TB;
+    start [shape = diamond, label = "Start"];
+    model_build [shape = box, label = "Build Model"];
+    fault_checking [shape = box, label = "Fault Model Checking"];
+    success [shape = box, label = "Model Is Correct"];
+    failure [shape = box, label = "Model Is Incorrect"];
+    
+    start -> model_build [label = "Build Model"];
+    model_build -> fault_checking [label = "Check Model"];
+    fault_checking -> success [label = "Model Is Correct"];
+    fault_checking -> failure [label = "Model Is Incorrect"];
+}
+```
+
+
 ** Birdsong as code
 
 ** [#B] A Long Strange Loop
@@ -49,3 +359,31 @@ St. Louis, MO
 ** [#B] Closing Reception and Signing
 
 
+* Setup 
+
+#+begin_src chatgpt-shell :version "gpt-4"
+Show the brew install commands suitable for Makefile to install Clojure, Graphviz dot, and Poetry
+#+end_src
+
+#+RESULTS:
+Here are the brew installation commands that you can add to your Makefile:
+
+```Makefile
+install:
+		brew install clojure
+		brew install graphviz
+		brew install poetry
+```
+
+This add a "install" task to your Makefile, which will install Clojure, Graphviz, and Poetry when you run `make install` in your terminal. 
+
+Remember to add `.PHONY: install` line to your Makefile to make sure that `make` doesn’t expect a file `install` to exist and always run regardless of whether files on the disk are up-to-date. 
+
+```Makefile
+.PHONY: install
+
+install:
+		brew install clojure
+		brew install graphviz
+		brew install poetry
+```
